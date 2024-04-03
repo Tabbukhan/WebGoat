@@ -12,4 +12,5 @@ pipeline {
                 sh 'trufflehog --regex --entropy=False .'
             }  
   }
+  }
 }
