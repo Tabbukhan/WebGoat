@@ -1,16 +1,16 @@
 pipeline {
   agent any
   stages {
-    //stage('scan') {
-      //steps {
-       // sh "docker run -v ${WORKSPACE}:/src --workdir /src returntocorp/semgrep-agent:v1 semgrep-agent --config p/ci --config p/security-audit --config p/secrets"
-      //}
-    //}
     stage('TruffleHog Scan') {
             steps {
                 // Run TruffleHog scan
                 sh 'trufflehog --regex --entropy=True .'
             }  
-  }
+    }
+    stage('scan') {
+            steps {
+            sh "docker run -v ${WORKSPACE}:/src --workdir /src returntocorp/semgrep-agent:v1 semgrep-agent --config p/ci --config p/security-audit --config p/secrets"
+            }
+    }
   }
 }
