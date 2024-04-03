@@ -9,7 +9,7 @@ pipeline {
     stage('TruffleHog Scan') {
             steps {
                 // Run TruffleHog scan
-                sh 'trufflehog --regex --entropy=False .'
+                sh 'trufflehog --regex --entropy=True .'
             }  
   }
   }
