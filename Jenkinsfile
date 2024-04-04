@@ -8,9 +8,6 @@ pipeline {
             }  
     }
       stage('GitGuardian Scan') {
-            agent {
-                docker { image 'gitguardian/ggshield' }
-            }
             environment {
                 GITGUARDIAN_API_KEY = credentials('guardian-token')
             }
